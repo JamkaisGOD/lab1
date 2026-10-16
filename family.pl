@@ -1,0 +1,74 @@
+% ===== Баримт: хүйс =====
+male(bataa).
+male(bold).
+male(tomor).
+male(dorj).
+male(zolboo).
+male(munkh).
+male(temuulen).
+male(bat).
+
+female(saraa).
+female(oyuna).
+female(tsetseg).
+female(ganaa).
+female(anar).
+female(naraa).
+female(enkhee).
+
+% ===== Баримт: эцэг эх =====
+parent(bataa, bold).
+parent(bataa, oyuna).
+parent(bataa, tomor).
+parent(saraa, bold).
+parent(saraa, oyuna).
+parent(saraa, tomor).
+
+parent(bold, anar).
+parent(bold, zolboo).
+parent(tsetseg, anar).
+parent(tsetseg, zolboo).
+
+parent(dorj, munkh).
+parent(dorj, naraa).
+parent(oyuna, munkh).
+parent(oyuna, naraa).
+
+parent(tomor, enkhee).
+parent(ganaa, enkhee).
+
+parent(bat, temuulen).
+parent(anar, temuulen).
+
+% ===== Алхам 3: энгийн дүрэм =====
+father(X, Y) :- parent(X, Y), male(X).
+mother(X, Y) :- parent(X, Y), female(X).
+son(X, Y) :- parent(Y, X), male(X).
+daughter(X, Y) :- parent(Y, X), female(X).
+
+person(X) :- male(X).
+person(X) :- female(X).
+
+% ===== Алхам 4: өвөө эмээ, ах дүү =====
+grandparent(X, Y) :- parent(X, Z), parent(Z, Y).
+sibling(X, Y) :- parent(Z, X), parent(Z, Y), X \= Y.
+
+% ===== Алхам 5: ураг төрлийн дүрмүүд =====
+brother(X, Y) :- sibling(X, Y), male(X).
+sister(X, Y) :- sibling(X, Y), female(X).
+uncle(X, Y) :- sibling(X, Z), parent(Z, Y), male(X).
+aunt(X, Y) :- sibling(X, Z), parent(Z, Y), female(X).
+cousin(X, Y) :- parent(P, X), parent(Q, Y), sibling(P, Q).
+
+% ===== Алхам 6: рекурсив дүрэм =====
+% parent-ийг эхэнд, ancestor-ыг төгсгөлд тавьсан - зүүн рекурс үүсгэхгүй,
+% хайлт stack дүүрэхгүй.
+ancestor(X, Y) :- parent(X, Y).
+ancestor(X, Y) :- parent(X, Z), ancestor(Z, Y).
+descendant(X, Y) :- ancestor(Y, X).
+
+% ===== Алхам 7: асуулт ба үгүйсгэл =====
+has_child(X) :- parent(X, _).
+childless(X) :- person(X), \+ has_child(X).
+
+great_grandparent(X, Y) :- parent(X, Z), grandparent(Z, Y).

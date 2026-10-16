@@ -2,3 +2,5 @@ jupyterlab
 notebook
 ipykernel
 pyMaze
+pygame
+pyDatalog
