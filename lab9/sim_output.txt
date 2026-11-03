@@ -1,0 +1,33 @@
+===== pyperplan-ын төлөвлөгөөнүүд =====
+p01.pddl + p01.pddl.soln
+  ЗӨВ: 4 алхамтай төлөвлөгөө зорилгод хүрлээ
+p02.pddl + p02.pddl.soln
+  ЗӨВ: 6 алхамтай төлөвлөгөө зорилгод хүрлээ
+p03.pddl + p03.pddl.soln
+  ЗӨВ: 8 алхамтай төлөвлөгөө зорилгод хүрлээ
+p04.pddl + p04.pddl.soln
+  ЗӨВ: 10 алхамтай төлөвлөгөө зорилгод хүрлээ
+lp01.pddl + lp01.pddl.soln
+  ЗӨВ: 10 алхамтай төлөвлөгөө зорилгод хүрлээ
+lp02.pddl + lp02.pddl.soln
+  ЗӨВ: 18 алхамтай төлөвлөгөө зорилгод хүрлээ
+lp03.pddl + lp03.pddl.soln
+  ЗӨВ: 26 алхамтай төлөвлөгөө зорилгод хүрлээ
+hanoi3.pddl + hanoi3.pddl.soln
+  ЗӨВ: 7 алхамтай төлөвлөгөө зорилгод хүрлээ
+hanoi4.pddl + hanoi4.pddl.soln
+  ЗӨВ: 15 алхамтай төлөвлөгөө зорилгод хүрлээ
+
+===== Гараар өгсөн буруу төлөвлөгөө (p01) =====
+(stack a b) ганцаараа:
+  БУРУУ: 0-р алхамд (stack a b) precondition биелээгүй. Дутуу: [('holding', 'a')]
+(pick-up a), (pick-up b):
+  БУРУУ: 1-р алхамд (pick-up b) precondition биелээгүй. Дутуу: [('handempty',)]
+
+===== Алхам 7: эвдэрсэн domain-ы төлөвлөгөөг жинхэнэ дүрмээр шалгах =====
+p01.pddl + broken1_p01.soln
+  БУРУУ: 1-р алхамд (pick-up a) precondition биелээгүй. Дутуу: [('handempty',)]
+p02.pddl + broken2_p02.soln
+  БУРУУ: 1-р алхамд (stack b a) precondition биелээгүй. Дутуу: [('clear', 'a')]
+p03.pddl + broken4_p03.soln
+  БУРУУ: 0-р алхамд (unstack b c) precondition биелээгүй. Дутуу: [('clear', 'b')]
